@@ -1,10 +1,10 @@
 <?php
 
 # loading for libs
-if(isset($config['libs']['autoload'])){
+if(isset($config['autoload']['libs'])){
 
 
-	foreach($config['libs']['autoload'] as $lib){
+	foreach($config['autoload']['libs'] as $lib){
 
 
 		# first, make sure the library exists
@@ -19,10 +19,10 @@ if(isset($config['libs']['autoload'])){
 
 
 # loading for models
-if(isset($config['models']['autoload'])){
+if(isset($config['autoload']['models'])){
 
 
-	foreach($config['models']['autoload'] as $model){
+	foreach($config['autoload']['models'] as $model){
 
 
 		# first, make sure the model exists

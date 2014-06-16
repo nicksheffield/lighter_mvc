@@ -39,14 +39,14 @@ if(count($segments)>2){
 
 
 # Check if the page exists
-if(file_exists('../app/controllers/'.$controller.'.php')){
-	require_once('../app/controllers/'.$controller.'.php');
+if(file_exists(APP_URL.'/controllers/'.$controller.'.php')){
+	require_once(APP_URL.'/controllers/'.$controller.'.php');
 
 	$loaded_controller = new $controller($registry);
 
 	call_user_func_array(array($loaded_controller, $method), $params);
 }else{
-	include('../app/errors/404.php');
+	include(APP_URL.'/errors/404.php');
 }
 
 // echo 'controller: '.$controller.'<br>';

@@ -2,7 +2,7 @@
 
 class Page extends Controller{
 
-	public function view($id){
+	function view($id){
 
 		$this->load->model('page_model');
 

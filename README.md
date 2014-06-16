@@ -28,8 +28,32 @@ This file contains standard options that may need to be changed for your website
 This file contains custom routes.
 
 ####controllers/
-Put controllers in here. Controllers are like a set of related pages. Each page is defined as a method inside the controllers class. The url is specified as website.com/controller/method/param1/param2/etc. 
+Put controllers in here.
+
+Controllers are classes that must be named the same as their filename (minus the .php of course). They extend the Controller class.
+
+Controllers are like a set of related pages. Each page is defined as a method inside the controllers class. The url is specified as website.com/controller/method/param1/param2/etc. 
 
 If no controller is specified, the default_controller is used from the config.php file.
 
 If no method is defined, the index() method is used.
+
+Params are optional, and only required if the method asks for it.
+
+###models/
+Put models in here.
+
+Models are classes that must be named the same as their filename (minus the .php of course). They extend the Model class.
+
+###errors/
+Put php files in here that are included as a complete view.
+
+There is already one for the 404 page.
+
+###libraries/
+Put third party libraries in here.
+
+You can autoload them in the `app/config/config.php` or inside a controller like `$this->load->library('library_name')`
+
+###views/
+Put views in here. You can add subfolders if needed. Always name them as .php, never as .html.

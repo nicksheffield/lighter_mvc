@@ -46,6 +46,8 @@ class URL{
 	*
 	*	Get a specific part of the url
 	*
+	*	@uses self::parts()
+	*
 	*	@param  int $n The index of the url part to get
 	*
 	*	@return string The requested part of the url

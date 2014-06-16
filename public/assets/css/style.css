@@ -6,6 +6,10 @@ body{
 	margin: 50px 0 0;
 }
 
+p, li{
+	line-height: 1.5;
+}
+
 .container{
 	max-width: 960px;
 	margin: 0 auto;

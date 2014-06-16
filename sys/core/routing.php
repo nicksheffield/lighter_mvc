@@ -44,7 +44,11 @@ if(file_exists(APP_URL.'/controllers/'.$controller.'.php') && strpos($method, '_
 
 	$loaded_controller = new $controller($registry);
 
-	call_user_func_array(array($loaded_controller, $method), $params);
+	if(method_exists($loaded_controller, $method)){
+		call_user_func_array(array($loaded_controller, $method), $params);
+	}else{
+		include(APP_URL.'/errors/404.php');
+	}
 	
 }else{
 	include(APP_URL.'/errors/404.php');

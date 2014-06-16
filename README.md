@@ -40,20 +40,20 @@ If no method is defined, the index() method is used.
 
 Params are optional, and only required if the method asks for it.
 
-###models/
+####models/
 Put models in here.
 
 Models are classes that must be named the same as their filename (minus the .php of course). They extend the Model class.
 
-###errors/
+####errors/
 Put php files in here that are included as a complete view.
 
 There is already one for the 404 page.
 
-###libraries/
+####libraries/
 Put third party libraries in here.
 
 You can autoload them in the `app/config/config.php` or inside a controller like `$this->load->library('library_name')`
 
-###views/
+####views/
 Put views in here. You can add subfolders if needed. Always name them as .php, never as .html.

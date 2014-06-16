@@ -59,4 +59,24 @@ class URL{
 		return $parts[$n];
 	}
 
+	/**
+	*
+	*	Get the url in string form
+	*
+	*	@uses self::parts()
+	*
+	*	@return string The url
+	*
+	*/
+	public static function string(){
+		$parts = self::parts();
+		$str = '';
+
+		foreach($parts as $part){
+			$str .= $part.'/';
+		}
+
+		return substr($str, 0, -1);
+	}
+
 }

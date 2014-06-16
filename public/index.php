@@ -14,7 +14,7 @@ require_once(APP_URL.'/config/routes.php');
 define('BASE_URL', $config['base_url']);
 
 # Load the Registry
-require_once('../sys/core/registry.php');
+require_once(SYS_URL.'/libraries/registry.php');
 $registry = new Registry();
 $registry->config = $config;
 

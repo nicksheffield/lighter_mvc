@@ -48,6 +48,10 @@ class Active_Record{
 		return $this;
 	}
 
+	public function unload(){
+		$this->data = array($primary_key => null);
+	}
+
 	function save(){
 		if(!isset($this->data[$this->primary_key])){
 			$this->db->insert($this->table, $this->data);

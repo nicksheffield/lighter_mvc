@@ -5,7 +5,7 @@ require_once('database.php');
 class Active_Record{
 
 	protected $table;
-	protected $primary_key;
+	protected $primary_key = 'id';
 
 	protected $singular = 'Record';
 

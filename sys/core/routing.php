@@ -9,7 +9,7 @@ if(!isset($_GET['page'])){
 	$page = $_GET['page'];
 }
 
-
+# if any routes are set for this page, use that instead.
 if(isset($routes[$page])){
 	$page = $routes[$page];
 }
@@ -36,9 +36,6 @@ if(count($segments)>2){
 		$params[] = $segments[$i];
 	}
 }
-
-
-
 
 
 # Check if the page exists

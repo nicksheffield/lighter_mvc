@@ -7,8 +7,8 @@ class URL{
 		exit;
 	}
 
-	public static function segments(){
-		$parts = explode($_GET['p']);
+	public static function parts(){
+		$parts = explode('/', $_GET['page']);
 
 		foreach($parts as $key => $val){
 			if($val == ''){
@@ -19,10 +19,10 @@ class URL{
 		return $parts;
 	}
 
-	public static function segment($n){
-		$segments = self::segments();
+	public static function part($n){
+		$parts = self::parts();
 
-		return $segments[$n];
+		return $parts[$n];
 	}
 
 }

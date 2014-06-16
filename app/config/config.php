@@ -1,5 +1,11 @@
 <?php
 
+/**
+*
+*	@todo Proper documentation
+*
+*/
+
 $config['default_controller']  = 'home';
 $config['base_url']            = '/github/mvc/public/';
 

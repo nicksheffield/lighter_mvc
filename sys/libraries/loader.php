@@ -10,6 +10,8 @@ class Loader{
 		if(file_exists('../app/models/'.$name.'.php')){
 			require_once('../app/models/'.$name.'.php');
 			$this->registry->$name = new $name($this->registry);
+
+			return $this->registry->$name;
 		}
 	}
 

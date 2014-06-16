@@ -60,7 +60,7 @@ Put views in here. You can add subfolders if needed. Always name them as .php, n
 
 ---
 
-##Example of a controller
+##Example of a Controller
 
 **app/controllers/home.php**
 
@@ -105,3 +105,37 @@ class Home extends Controller{
 ?>
 ```
 
+---
+
+##Example of a Model
+
+**app/models/page_model.php**
+
+```php
+<?php
+
+class Page_model extends Model{
+
+	# The table properties are required for every model
+	protected $table = 'tb_pages';
+
+	# The primary_key and singular properties are optional
+	protected $primary_key = 'id';
+
+	# The singular property is used in error messages regarding this model
+	protected $singular = 'Page';
+
+	public function load_by_name($name){
+		$id = $this->db
+			->select('id')
+			->from('tb_pages')
+			->where(array('title' => $name))
+			->get_field('id');
+
+		$this->load($id);
+	}
+
+}
+
+?>
+```

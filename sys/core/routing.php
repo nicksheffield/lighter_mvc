@@ -26,7 +26,7 @@ switch(count($parts)){
 		break;
 }
 
-if(file_exists(APP_URL.'/controllers/'.$controller.'.php')){
+if(file_exists(APP_URL.'/controllers/'.$controller.'.php') && strpos($method, '_') !== 0){
 	require_once APP_URL.'/controllers/'.$controller.'.php';
 
 	$c = new $controller($registry);

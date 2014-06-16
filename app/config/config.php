@@ -1,7 +1,7 @@
 <?php
 
 $config['default_controller'] = 'home';
-$config['base_url']           = '/mvc/public/';
+$config['base_url']           = '/github/mvc/public/';
 
 $config['autoload']['libs']   = array('database');
 $config['autoload']['models'] = array();

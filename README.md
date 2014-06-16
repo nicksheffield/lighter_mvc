@@ -57,3 +57,51 @@ You can autoload them in the `app/config/config.php` or inside a controller like
 
 ####views/
 Put views in here. You can add subfolders if needed. Always name them as .php, never as .html.
+
+---
+
+##Example of a controller
+
+**app/controllers/home.php**
+
+```php
+<?php
+
+class Home extends Controller{
+
+	function index(){
+		$this->load->view('header');
+		$this->load->view('nav');
+		$this->load->view('home_page');
+		$this->load->view('footer');
+	}
+
+	function login(){
+		$data['error'] = '';
+		
+		if($_POST){
+			$this->load->model('user');
+
+			$this->user_model->username = $_POST['username'];
+			$this->user_model->password = $_POST['password'];
+
+			if($this->user_model->authenticate()){
+				URL::redirect('admin/welcome');
+			}else{
+				$data['error'] = 'Your username or password is invalid.';
+			}
+		}
+
+		$this->load->view('header');
+		$this->load->view('nav');
+		$this->load->view('login_form', $data);
+		$this->load->view('footer');
+	}
+
+
+
+}
+
+?>
+```
+

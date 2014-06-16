@@ -6,7 +6,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.+)/$ $1 [L,R=301]
 
 
-RewriteBase /mvc/public/
+RewriteBase /github/mvc/public/
 # Checks to see if the user is attempting to access a valid file,
 # such as an image or css document, if this isn't true it sends the
 # request to index.php

@@ -27,6 +27,8 @@ if(isset($config['autoload']['models'])){
 
 		# first, make sure the model exists
 		if(file_exists(APP_URL.'/models/'.$model.'.php')){
+			# Load the base Model class
+			require_once(SYS_URL.'/libraries/model.php');
 
 			# then include it
 			include_once(APP_URL.'/models/'.$model.'.php');

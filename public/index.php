@@ -20,9 +20,6 @@ $registry->config = $config;
 
 # Load the base Controller class
 require_once(SYS_URL.'/libraries/controller.php');
-# Load the base Model class
-require_once(SYS_URL.'/libraries/model.php');
-
 
 # Autoload all the classes needed
 require_once(SYS_URL.'/core/autoload.php');

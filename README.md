@@ -4,6 +4,8 @@
 
 Below is a rundown on the folders.
 
+---
+
 ###public
 
 ####index.php
@@ -14,6 +16,8 @@ Put all the normal assets you would use in this folder, whether it be css, image
 
 ####.htaccess
 This file is necessary for routing to any page other than the homepage.
+
+---
 
 ###App
 

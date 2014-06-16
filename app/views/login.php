@@ -1,16 +1,17 @@
 <div class="main">
-	<form action="">
-		<label for="username">Username</label>
-		<input type="text" id="username" name="username">
+	<?=Form::open()?>
 
-		<br>
+		<div class="row">
+			<?=Form::label('username', 'Username')?>
+			<?=Form::text('username')?>
+		</div>
 
-		<label for="password">Password</label>
-		<input type="password" id="password" name="username">
+		<div class="row">
+			<?=Form::label('password', 'Password')?>
+			<?=Form::password('password')?>
+		</div>
 
-		<br>
+		<?=Form::submit()?>
 
-		<input type="submit">
-
-	</form>
+	<?=Form::close()?>
 </div>

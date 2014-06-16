@@ -24,4 +24,13 @@ class Loader{
 		}
 	}
 
+	public function error($name, $data = array()){
+		if(file_exists('../app/errors/'.$name.'.php')){
+			if(count($data)){
+				extract($data);
+			}
+			include('../app/errors/'.$name.'.php');
+		}
+	}
+
 }

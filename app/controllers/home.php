@@ -14,4 +14,10 @@ class Home extends Controller{
 		$this->load->view('footer');
 	}
 
+	# This method is private to this controller.
+	# It cannot be accessed by url
+	function _private(){
+		echo 'This is a private page';
+	}
+
 }

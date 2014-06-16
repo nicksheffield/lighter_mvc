@@ -38,13 +38,14 @@ if(count($segments)>2){
 }
 
 
-# Check if the page exists
-if(file_exists(APP_URL.'/controllers/'.$controller.'.php')){
+# Check if the page exists and that it isn't a private method (starts with an underscore)
+if(file_exists(APP_URL.'/controllers/'.$controller.'.php') && strpos($method, '_') !== 0){
 	require_once(APP_URL.'/controllers/'.$controller.'.php');
 
 	$loaded_controller = new $controller($registry);
 
 	call_user_func_array(array($loaded_controller, $method), $params);
+	
 }else{
 	include(APP_URL.'/errors/404.php');
 }

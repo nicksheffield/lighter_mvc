@@ -2,7 +2,7 @@
 
 $controller = '';
 $method     = '';
-$params     = [];
+$params     = array();
 
 $parts = URL::parts();
 

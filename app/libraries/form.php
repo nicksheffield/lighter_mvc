@@ -1,6 +1,7 @@
 <?php
 
 /**
+*
 *	Form creation class
 *
 *	@version 1.1
@@ -11,6 +12,7 @@
 class Form{
 
 	/**
+	*
 	*	Creates a form open tag
 	*	
 	*	@param  string $action The url for the form to post to
@@ -25,6 +27,7 @@ class Form{
 	}
 
 	/**
+	*
 	*	Creates a form open tag that works with uploads
 	*	
 	*	@param  string $action The url for the form to post to
@@ -49,6 +52,7 @@ class Form{
 	}
 
 	/**
+	*
 	*	Creates a input tag
 	*	
 	*	@param  string $type   The type of input it will be
@@ -65,6 +69,7 @@ class Form{
 	}
 
 	/**
+	*
 	*	Creates a label tag
 	*	
 	*	@param  string $for    The id attribute of the field this label is for
@@ -79,6 +84,7 @@ class Form{
 	}
 
 	/**
+	*
 	*	Creates a textarea tag
 	*	
 	*	@param  string $name   The name attribute of the textarea
@@ -93,6 +99,7 @@ class Form{
 	}
 
 	/**
+	*
 	*	Creates a set of option tags from an array
 	*
 	*	@used-by self::select() to get option tags
@@ -115,6 +122,7 @@ class Form{
 	}
 
 	/**
+	*
 	*	Creates a select tag with option tags within it
 	*	
 	*	@uses   self::options() to get option tags
@@ -136,6 +144,7 @@ class Form{
 	/* Shortcut functions for common input types */
 
 	/**
+	*
 	*	Creates a hidden input tag
 	*	
 	*	@uses   self::input() to create the tag
@@ -152,6 +161,7 @@ class Form{
 	}
 
 	/**
+	*
 	*	Creates a text input tag
 	*	
 	*	@uses   self::input() to create the tag
@@ -168,6 +178,7 @@ class Form{
 	}
 
 	/**
+	*
 	*	Creates a password input tag
 	*	
 	*	@uses   self::input() to create the tag
@@ -184,6 +195,7 @@ class Form{
 	}
 
 	/**
+	*
 	*	Creates a file input tag
 	*	
 	*	@uses   self::input() to create the tag
@@ -199,6 +211,7 @@ class Form{
 	}
 
 	/**
+	*
 	*	Creates a submit button
 	*	
 	*	@uses   self::input() to create the tag
@@ -214,6 +227,7 @@ class Form{
 	}
 
 	/**
+	*
 	*	Creates a hidden input tag for to MAX_FILE_SIZE
 	*	
 	*	@uses   self::input() to create the tag
@@ -229,6 +243,7 @@ class Form{
 	}
 
 	/**
+	*
 	*	Creates a number input tag
 	*	
 	*	@uses   self::input() to create the tag

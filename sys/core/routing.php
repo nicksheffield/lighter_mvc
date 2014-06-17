@@ -35,11 +35,11 @@ if(file_exists(APP_URL.'/controllers/'.$controller.'.php') && strpos($method, '_
 		if(method_exists($c, $method)){
 			call_user_func_array(array($c, $method), $params);
 		}else{
-			include(APP_URL.'/errors/404.php');
+			$registry->load->error('404');
 		}
 	}else{
-		include(APP_URL.'/errors/404.php');
+		$registry->load->error('404');
 	}
 }else{
-	include(APP_URL.'/errors/404.php');
+	$registry->load->error('404');
 }

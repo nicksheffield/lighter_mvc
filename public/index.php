@@ -17,6 +17,7 @@ define('BASE_URL', $config['base_url']);
 require_once(SYS_URL.'/libraries/registry.php');
 $registry = new Registry();
 $registry->config = $config;
+$registry->routes = $routes;
 
 # Load the base Controller class
 require_once(SYS_URL.'/libraries/controller.php');

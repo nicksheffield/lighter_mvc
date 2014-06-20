@@ -8,7 +8,7 @@ $parts = URL::parts();
 
 switch(count($parts)){
 	case 0:
-		$controller = $config['default_controller'];
+		$controller = $registry->config['default_controller'];
 		$method     = 'index';
 		break;
 	case 1:

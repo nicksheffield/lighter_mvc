@@ -11,6 +11,9 @@
 
 class URL{
 
+	public static $path = '';
+	public static $old  = '';
+
 	/**
 	*
 	*	Redirect to a given url.
@@ -31,7 +34,12 @@ class URL{
 	*
 	*/
 	public static function parts(){
-		$parts = explode('/', $_GET['page']);
+		if(!self::$path){
+			self::$path = str_replace(Registry::$config['base_url'], '', $_SERVER['REQUEST_URI']);
+		}
+
+		$parts = explode('/', self::$path);
+		
 
 		foreach($parts as $key => $val){
 			if($val == ''){
@@ -77,6 +85,17 @@ class URL{
 		}
 
 		return substr($str, 0, -1);
+	}
+
+	/**
+	* @todo try this stuff
+	*/
+	public function save(){
+		self::$old = self::string();
+	}
+
+	public function restore(){
+		self::redirect(self::$old);
 	}
 
 }

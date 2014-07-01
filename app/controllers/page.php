@@ -4,15 +4,20 @@ class Page extends Controller{
 
 	function view($id){
 
+		# Load the page model
 		Load::model('page_model');
 
+		# instantiate the page model
 		$page = new Page_model();
 
+		# load the page
 		$page->load($id);
 
+		# put the pages name and content into the $data
 		$data['name']    = $page->name;
 		$data['content'] = $page->content;
 
+		# load each view. Send the $data to the 'page' view
 		Load::view('header');
 		Load::view('page', $data);
 		Load::view('footer');
@@ -32,7 +37,6 @@ class Page extends Controller{
 		Load::view('header');
 		Load::view('page', $data);
 		Load::view('footer');
-
 	}
 
 }

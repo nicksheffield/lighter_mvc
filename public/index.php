@@ -33,8 +33,15 @@ require_once(SYS_URL.'/libraries/model.php');
 # Autoload all the classes needed
 require_once(SYS_URL.'/core/autoload.php');
 
+# Load the input class
+require_once(SYS_URL.'/libraries/input.php');
+
+# Load the superglobals filter
+require_once(SYS_URL.'/core/superglobals.php');
+
 # Deal with the url to see exactly what controller we are using
 require_once(SYS_URL.'/core/routing.php');
+
 
 # output any views we have loaded and any echoes we did.
 echo ob_get_clean();

@@ -1,5 +1,5 @@
 <div class="main">
-	<?=Form::open()?>
+	<?=Form::open('home/process_login')?>
 
 		<div class="row">
 			<?=Form::label('username', 'Username')?>

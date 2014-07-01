@@ -11,7 +11,7 @@ foreach(Registry::$routes as $route => $newpath){
 
 	if(URL::string() == $route){
 
-		$_GET['page'] = $newpath;
+		URL::$path = $newpath;
 		break;
 
 	}else if(preg_match($t_route, URL::string())){
@@ -31,7 +31,7 @@ foreach(Registry::$routes as $route => $newpath){
 			}
 		}
 
-		$_GET['page'] = vsprintf($f_route, $wildcards);
+		URL::$path = vsprintf($f_route, $wildcards);
 	}
 }
 

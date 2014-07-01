@@ -14,6 +14,10 @@ class Home extends Controller{
 		Load::view('footer');
 	}
 
+	function process_login(){
+		echo Input::get('username');
+	}
+
 	function page($id){
 		Load::model('page_model');
 

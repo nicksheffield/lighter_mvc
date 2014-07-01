@@ -10,7 +10,7 @@ $config['default_controller']  = 'home';
 $config['base_url']            = '/mvc/public/';
 
 $config['autoload']['libs']    = array('url', 'form');
-$config['autoload']['models']  = array('page');
+$config['autoload']['models']  = array();
 
 $config['db']['hostname']      = 'localhost';
 $config['db']['username']      = 'root';

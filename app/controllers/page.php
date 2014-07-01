@@ -4,16 +4,18 @@ class Page extends Controller{
 
 	function view($id){
 
-		$this->load->model('page_model');
+		Load::model('page_model');
 
-		$this->page_model->load($id);
+		$page = new Page_model();
 
-		$data['title'] = $this->page_model->title;
-		$data['content'] = $this->page_model->content;
+		$page->load($id);
 
-		$this->load->view('header');
-		$this->load->view('page', $data);
-		$this->load->view('footer');
+		$data['name']    = $page->name;
+		$data['content'] = $page->content;
+
+		Load::view('header');
+		Load::view('page', $data);
+		Load::view('footer');
 	}
 
 }

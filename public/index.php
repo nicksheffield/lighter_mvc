@@ -13,14 +13,17 @@ require_once(APP_URL.'/config/routes.php');
 # set the base url constant, which we will use in html
 define('BASE_URL', $config['base_url']);
 
+# loading for system classes that definitely need to be loaded into the registry
+require_once(SYS_URL.'/libraries/load.php');
+
 # Load the Registry
 require_once(SYS_URL.'/libraries/registry.php');
-$registry = new Registry();
-$registry->config = $config;
-$registry->routes = $routes;
+Registry::$config = $config;
+Registry::$routes = $routes;
 
 # Load the base Controller class
 require_once(SYS_URL.'/libraries/controller.php');
+require_once(SYS_URL.'/libraries/model.php');
 
 # Autoload all the classes needed
 require_once(SYS_URL.'/core/autoload.php');

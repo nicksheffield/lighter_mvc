@@ -15,5 +15,6 @@
 *
 */
 
-$routes['login'] = 'home/login';
-$routes['wtf'] = 'blah';
+$routes['login']   = 'home/login';
+$routes['wtf']     = 'blah';
+$routes['page/:id'] = 'page/view/:id';

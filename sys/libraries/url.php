@@ -19,7 +19,7 @@ class URL{
 	*
 	*/
 	public static function redirect($url){
-		header('location: '.$url);
+		header('location: '.Registry::$config['base_url'].$url);
 		exit;
 	}
 

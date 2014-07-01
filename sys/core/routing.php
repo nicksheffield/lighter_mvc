@@ -15,6 +15,7 @@ foreach(Registry::$routes as $route => $newpath){
 
 	}else if(preg_match($t_route, URL::string())){
 
+		# Create a format string for vsprintf to use later from the newpath (where we want to technically redirect to)
 		$f_route = str_replace(array(':num', ':any'), array('%d', '%s'), $newpath);
 
 		$route_parts = explode('/', $route);

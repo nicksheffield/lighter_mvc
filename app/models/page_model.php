@@ -1,6 +1,6 @@
 <?php
 
-class Page extends Model{
+class Page_model extends Model{
 
 	protected $table       = 'tb_pages';
 	protected $singular    = 'Page';

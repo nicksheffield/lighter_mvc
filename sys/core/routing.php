@@ -4,6 +4,12 @@ $controller = '';
 $method     = '';
 $params     = array();
 
+foreach(Registry::$routes as $route => $newpath){
+	if(URL::string() == $route){
+		$_GET['page'] = $newpath;
+	}
+}
+
 $parts = URL::parts();
 
 switch(count($parts)){

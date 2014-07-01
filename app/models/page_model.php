@@ -11,7 +11,7 @@ class Page_model extends Model{
 			->select('*')
 			->from($this->table)
 			->where(array('name'=>$name))
-			->get_field($this->primary_key);
+			->get_one();
 
 		$this->fill($data);
 	}

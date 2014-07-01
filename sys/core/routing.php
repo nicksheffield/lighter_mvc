@@ -7,11 +7,12 @@ $params     = array();
 # intercept the route process by checking if we should be using a custom route instead
 
 foreach(Registry::$routes as $route => $newpath){
-	$t_route = '/^'.str_replace(array('/',':num',':any'), array('\/','\d{0,}','[A-z0-9\-]{0,}'), $route).'$/';
+	$t_route = '/^'.str_replace(array('/',':num',':any'), array('\/','\d{0,}','[A-z0-9\-\%]{0,}'), $route).'$/';
 
 	if(URL::string() == $route){
 
 		$_GET['page'] = $newpath;
+		break;
 
 	}else if(preg_match($t_route, URL::string())){
 

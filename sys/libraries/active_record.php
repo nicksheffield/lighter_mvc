@@ -14,14 +14,8 @@ class Active_Record{
 
 	public $db;
 
-	public function __CONSTRUCT($reg){
-		# Set the database property to the db we supplied.
-		$this->registry = $reg;
-		if(!isset($reg->db)){
-			echo 'No database loaded';
-			exit;
-		}
-		$this->db = $reg->db;
+	public function __construct(){
+		$this->db = Registry::$db;
 
 		$this->fields = $this->db->get_fields($this->table);
 		$this->data[$this->primary_key] = null;
@@ -42,10 +36,14 @@ class Active_Record{
 			}
 			// todo: foreign key relations
 		}else{
-			echo 'No '.$this->singular.' exists with the id of '.$id;
+			echo 'No '.$this->singular.' exists with the '.$this->primary_key.' of '.$id;
 		}
 
 		return $this;
+	}
+
+	public function fill($data){
+		$this->data = array_merge($this->data, $data);
 	}
 
 	public function unload(){
@@ -77,7 +75,7 @@ class Active_Record{
 	}
 
 
-	function __GET($var){
+	function __get($var){
 		if(isset($this->data[$var])){
 			return $this->data[$var];
 		}else if($var == 'id'){
@@ -86,7 +84,7 @@ class Active_Record{
 	}
 
 
-	function __SET($var, $val){
+	function __set($var, $val){
 		if(in_array($var, $this->fields)){
 			return $this->data[$var] = $val;
 		}

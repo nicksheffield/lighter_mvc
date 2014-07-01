@@ -17,4 +17,5 @@
 
 $routes['login']    = 'home/login';
 $routes['wtf']      = 'blah';
-$routes['page/:id'] = 'page/view/:id';
+$routes['page/:num'] = 'page/view/:num';
+$routes['user/:any'] = 'user/:any';

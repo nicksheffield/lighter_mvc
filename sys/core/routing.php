@@ -5,8 +5,20 @@ $method     = '';
 $params     = array();
 
 foreach(Registry::$routes as $route => $newpath){
+	$t_route = '/^'.str_replace(array(
+		'/', ':num', ':any'
+	),array(
+		'\/', '\d{0,}', '[A-z0-9\-]{0,}'
+	), $route).'$/';
+
 	if(URL::string() == $route){
+
 		$_GET['page'] = $newpath;
+
+	}else if(preg_match($t_route, URL::string())){
+		//echo $t_route.' - match<br>';
+
+
 	}
 }
 

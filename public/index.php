@@ -1,5 +1,10 @@
 <?php
 
+# start output buffering. This temporarily stores any echoes or included views.
+# We will output it later, at the bottom of this file.
+# This allows us to use a header redirect any time, without worrying about previous echoes.
+ob_start();
+
 # Define constants for the app and system folders
 define('APP_URL', '../app');
 define('SYS_URL', '../sys');
@@ -30,3 +35,6 @@ require_once(SYS_URL.'/core/autoload.php');
 
 # Deal with the url to see exactly what controller we are using
 require_once(SYS_URL.'/core/routing.php');
+
+# output any views we have loaded and any echoes we did.
+echo ob_get_clean();

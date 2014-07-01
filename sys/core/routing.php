@@ -4,23 +4,36 @@ $controller = '';
 $method     = '';
 $params     = array();
 
+# intercept the route process by checking if we should be using a custom route instead
+
 foreach(Registry::$routes as $route => $newpath){
-	$t_route = '/^'.str_replace(array(
-		'/', ':num', ':any'
-	),array(
-		'\/', '\d{0,}', '[A-z0-9\-]{0,}'
-	), $route).'$/';
+	$t_route = '/^'.str_replace(array('/',':num',':any'), array('\/','\d{0,}','[A-z0-9\-]{0,}'), $route).'$/';
 
 	if(URL::string() == $route){
 
 		$_GET['page'] = $newpath;
 
 	}else if(preg_match($t_route, URL::string())){
-		//echo $t_route.' - match<br>';
 
+		$f_route = str_replace(array(':num', ':any'), array('%d', '%s'), $newpath);
 
+		$route_parts = explode('/', $route);
+		$url_parts = URL::parts();
+
+		# find which indexes from the route are wildcards
+		$wildcards = array();
+
+		for($i=0; $i<count($route_parts); $i++){
+			if(substr($route_parts[$i], 0, 1) == ':'){
+				array_push($wildcards, $url_parts[$i]);
+			}
+		}
+
+		$_GET['page'] = vsprintf($f_route, $wildcards);
 	}
 }
+
+# resume the normal route process of deciding what is the controller, method, and params
 
 $parts = URL::parts();
 

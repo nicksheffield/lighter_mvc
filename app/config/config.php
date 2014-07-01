@@ -15,4 +15,4 @@ $config['autoload']['models']  = array();
 $config['db']['hostname']      = 'localhost';
 $config['db']['username']      = 'root';
 $config['db']['password']      = '';
-$config['db']['database']      = '';
+$config['db']['database']      = 'cms';

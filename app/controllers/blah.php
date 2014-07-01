@@ -3,9 +3,9 @@
 class Blah extends Controller{
 
 	function index(){
-		$this->load->view('header');
-		$this->load->view('abcd');
-		$this->load->view('footer');
+		Load::view('header');
+		Load::view('abcd');
+		Load::view('footer');
 	}
 
 	function test(){

@@ -4,11 +4,42 @@ $controller = '';
 $method     = '';
 $params     = array();
 
+# intercept the route process by checking if we should be using a custom route instead
+
+foreach(Registry::$routes as $route => $newpath){
+	$t_route = '/^'.str_replace(array('/',':num',':any'), array('\/','\d{0,}','[A-z0-9\-]{0,}'), $route).'$/';
+
+	if(URL::string() == $route){
+
+		$_GET['page'] = $newpath;
+
+	}else if(preg_match($t_route, URL::string())){
+
+		$f_route = str_replace(array(':num', ':any'), array('%d', '%s'), $newpath);
+
+		$route_parts = explode('/', $route);
+		$url_parts = URL::parts();
+
+		# find which indexes from the route are wildcards
+		$wildcards = array();
+
+		for($i=0; $i<count($route_parts); $i++){
+			if(substr($route_parts[$i], 0, 1) == ':'){
+				array_push($wildcards, $url_parts[$i]);
+			}
+		}
+
+		$_GET['page'] = vsprintf($f_route, $wildcards);
+	}
+}
+
+# resume the normal route process of deciding what is the controller, method, and params
+
 $parts = URL::parts();
 
 switch(count($parts)){
 	case 0:
-		$controller = $registry->config['default_controller'];
+		$controller = Registry::$config['default_controller'];
 		$method     = 'index';
 		break;
 	case 1:
@@ -29,17 +60,17 @@ switch(count($parts)){
 if(file_exists(APP_URL.'/controllers/'.$controller.'.php') && strpos($method, '_') !== 0){
 	require_once APP_URL.'/controllers/'.$controller.'.php';
 
-	$c = new $controller($registry);
+	$c = new $controller();
 
 	if($c){
 		if(method_exists($c, $method)){
 			call_user_func_array(array($c, $method), $params);
 		}else{
-			$registry->load->error('404');
+			Load::error('404');
 		}
 	}else{
-		$registry->load->error('404');
+		Load::error('404');
 	}
 }else{
-	$registry->load->error('404');
+	Load::error('404');
 }

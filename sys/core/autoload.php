@@ -32,14 +32,6 @@ if(isset($config['autoload']['models'])){
 
 			# then include it
 			include_once(APP_URL.'/models/'.$model.'.php');
-
-			$registry->$model = new $model($registry);
 		}
 	}
 }
-
-
-# loading for system classes that definitely need to be loaded into the registry
-require_once(SYS_URL.'/libraries/loader.php');
-
-$registry->load = new Loader($registry);

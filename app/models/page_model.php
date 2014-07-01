@@ -2,19 +2,18 @@
 
 class Page_model extends Model{
 
-	protected $table = 'tb_pages';
-	protected $primary_key = 'page_id';
-	protected $singular = 'Page';
-
+	protected $table       = 'tb_pages';
+	protected $singular    = 'Page';
+	protected $primary_key = 'id';
 
 	public function load_by_name($name){
-		$id = $this->db
-			->select('page_id')
-			->from('tb_pages')
-			->where(array('title'=>$name))
-			->get_field('page_id');
+		$data = $this->db
+			->select('*')
+			->from($this->table)
+			->where(array('name'=>$name))
+			->get_one();
 
-		$this->load($id);
+		$this->fill($data);
 	}
 
 }

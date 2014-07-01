@@ -24,14 +24,13 @@ class Database{
 
 
 
-	public function __construct($reg){
-		$this->registry = $reg;
+	public function __construct(){
 
 		$this->connection = new mysqli(
-			$reg->config['db']['hostname'],
-			$reg->config['db']['username'],
-			$reg->config['db']['password'],
-			$reg->config['db']['database']
+			Registry::$config['db']['hostname'],
+			Registry::$config['db']['username'],
+			Registry::$config['db']['password'],
+			Registry::$config['db']['database']
 		);
 
 		if($this->connection->errno){
@@ -358,4 +357,4 @@ class Database{
 
 }
 
-$registry->db = new Database($registry);
+Registry::$db = new Database();

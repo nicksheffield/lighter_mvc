@@ -75,3 +75,7 @@ nav li a:hover{
 .main h1{
 	margin-top: 0;
 }
+
+.main img{
+	max-width: 100%;
+}

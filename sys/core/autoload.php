@@ -6,15 +6,10 @@ if(isset($config['autoload']['libs'])){
 	foreach($config['autoload']['libs'] as $lib){
 
 		# first, make sure the library exists
-		if(file_exists(SYS_URL.'/libraries/'.$lib.'.php')){
+		if(file_exists(APP_URL.'/libraries/'.$lib.'.php')){
 
-			# then include it
-			include_once(SYS_URL.'/libraries/'.$lib.'.php');
-
-		}else if(file_exists(APP_URL.'/libraries/'.$lib.'.php')){
-
-			# then include it
-			include_once(APP_URL.'/libraries/'.$lib.'.php');
+			# then require it
+			require_once(APP_URL.'/libraries/'.$lib.'.php');
 		}
 	}
 }
@@ -30,8 +25,8 @@ if(isset($config['autoload']['models'])){
 			# Load the base Model class
 			require_once(SYS_URL.'/libraries/model.php');
 
-			# then include it
-			include_once(APP_URL.'/models/'.$model.'.php');
+			# then require it
+			require_once(APP_URL.'/models/'.$model.'.php');
 		}
 	}
 }

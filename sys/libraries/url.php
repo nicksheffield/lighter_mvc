@@ -90,12 +90,12 @@ class URL{
 	/**
 	* @todo try this stuff
 	*/
-	public function save(){
-		self::$old = self::string();
+	public function save($url = false){
+		$_SESSION['url']['old'] = $url ? $url : self::string();
 	}
 
 	public function restore(){
-		self::redirect(self::$old);
+		self::redirect($_SESSION['url']['old']);
 	}
 
 }

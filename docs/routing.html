@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Config - Lighter</title>
+	<title>Routing - Lighter</title>
 	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -19,11 +19,11 @@
 					<li>
 						<a href="index.html">Overview</a>
 						<ul>
-							<li><a href="config.html" class="current">Config</a></li>
+							<li><a href="config.html">Config</a></li>
 							<li><a href="controllers.html">Controllers</a></li>
 							<li><a href="models.html">Models</a></li>
 							<li><a href="views.html">Views</a></li>
-							<li><a href="routing.html">Routing</a></li>
+							<li><a href="routing.html" class="current">Routing</a></li>
 						</ul>
 					</li>
 
@@ -50,29 +50,25 @@
 		</div>
 
 		<div class="main">
-			<h1>Config</h1>
-			<p class="location code">app/config/config.php</p>
+			<h1>Routing</h1>
+			<p class="location code">app/config/routes.php</p>
 
-			<p>The config file defines a set of options used by the application at various stages.</p>
+			<p>Routes are like shortcuts.</p>
 
-			<p>Below is a breakdown of each option.</p>
+			<p>Example:</p>
 
-			<dl>
-				<dt>default_controller</dt>
-				<dd>The default controller to be loaded when one is not specified in the url.</dd>
+			<p><span class="code">$routes['login'] = 'home/login';</span></p>
 
-				<dt>base_url</dt>
-				<dd>The url to the public folder. If the public folder is the web root (public_html) then this should be left blank.</dd>
+			<p>This means if a user tries to access <span class="code">http://example.com/login</span> it will load the <b>home</b> controller and then run the <b>login</b> method</p>
 
-				<dt>autoload libs</dt>
-				<dd>An array of libraries to load automatically every time the website is loaded.<br>For example, to always load the form, cart, and email libraries, this setting would look like <span class="code">$config['autoload']['libs'] = array('form', 'cart', 'email');</span></dd>
+			<p>Wildcards are also possible, for example, if you want to edit a user, you might have a controller already called "admin", with a method inside that called "edit_user", but want to url of that page to look like <span class="code">http://example.com/edit/user/9</span></p>
 
-				<dt>autoload models</dt>
-				<dd>An array of models to load automatically every time the website is loaded. Syntax is exactly the same as autoloading libraries.</dd>
+			<p>Even if you don't have an "edit" controller, with a "user" function, you can still simulate that by creating a route like:</p>
 
-				<dt>database credentials</dt>
-				<dd>The information needed to successfully connect to the database.</dd>
-			</dl>
+			<p><span class="code">$routes['edit/user/:num'] = 'admin/edit_user/:num';</span></p>
+
+			<p>:num can be replaced by any digit<br>
+			:any can be replaced by any alphanumeric character (a-z, A-Z, 0-9), or hyphen (-) and percent (%)</p>
 		</div>
 	</div>
 

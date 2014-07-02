@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Config - Lighter</title>
+	<title>Loader - Lighter</title>
 	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -19,7 +19,7 @@
 					<li>
 						<a href="index.html">Overview</a>
 						<ul>
-							<li><a href="config.html" class="current">Config</a></li>
+							<li><a href="config.html">Config</a></li>
 							<li><a href="controllers.html">Controllers</a></li>
 							<li><a href="models.html">Models</a></li>
 							<li><a href="views.html">Views</a></li>
@@ -31,7 +31,7 @@
 						<a href="libraries.html">Libraries</a>
 
 						<ul>
-							<li><a href="loader.html">Loader</a></li>
+							<li><a href="loader.html" class="current">Loader</a></li>
 							<li><a href="url.html">URL</a></li>
 							<li><a href="input.html">Input</a></li>
 							<li><a href="registry.html">Registry</a></li>
@@ -50,29 +50,31 @@
 		</div>
 
 		<div class="main">
-			<h1>Config</h1>
-			<p class="location code">app/config/config.php</p>
+			<h1>Loader</h1>
+			<p class="location code">sys/libraries/load.php</p>
 
-			<p>The config file defines a set of options used by the application at various stages.</p>
+			<p>This library is used to load in views, libraries, models, and error pages whenever necessary.</p>
+			
+			<hr>
 
-			<p>Below is a breakdown of each option.</p>
+			<h2>Methods</h2>
 
-			<dl>
-				<dt>default_controller</dt>
-				<dd>The default controller to be loaded when one is not specified in the url.</dd>
+			<div class="doc">
 
-				<dt>base_url</dt>
-				<dd>The url to the public folder. If the public folder is the web root (public_html) then this should be left blank.</dd>
+				<dl>
+					<dt>model($name)</dt>
+					<dd>Static. Load a model from the app/models folder. Php file extension not needed.</dd>
 
-				<dt>autoload libs</dt>
-				<dd>An array of libraries to load automatically every time the website is loaded.<br>For example, to always load the form, cart, and email libraries, this setting would look like <span class="code">$config['autoload']['libs'] = array('form', 'cart', 'email');</span></dd>
+					<dt>library($name)</dt>
+					<dd>Static. Load a library from the app/libraries folder. Php file extension not needed.</dd>
 
-				<dt>autoload models</dt>
-				<dd>An array of models to load automatically every time the website is loaded. Syntax is exactly the same as autoloading libraries.</dd>
+					<dt>view($name, $data)</dt>
+					<dd>Static. Load a view from the app/views folder. <a href="http://www.php.net/manual/en/function.extract.php" target="_blank">Extracts</a> the $data array. Php file extension not needed.</dd>
 
-				<dt>database credentials</dt>
-				<dd>The information needed to successfully connect to the database.</dd>
-			</dl>
+					<dt>error($name, $data)</dt>
+					<dd>Static. Load a view from the app/errors folder. <a href="http://www.php.net/manual/en/function.extract.php" target="_blank">Extracts</a> the $data array. Php file extension not needed.</dd>
+				</dl>
+			</div>
 		</div>
 	</div>
 

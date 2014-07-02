@@ -11,12 +11,24 @@ body{
 	color: #4b4b4b;
 
 	margin-top: 3em;
+	padding-bottom: 5em;
 	background: #d9d9d9;
 	-webkit-font-smoothing: antialiased;
+
+	overflow-y: scroll;
 }
 
 p, li, dl{
 	line-height: 1.5;
+}
+
+a{
+	color: #4681A0;
+	text-decoration: none;
+}
+
+a:hover{
+	text-decoration: underline;
 }
 
 .container{
@@ -25,8 +37,20 @@ p, li, dl{
 	overflow: hidden;
 	background: #fff;
 	padding: 30px;
+	position: relative;
+	min-height: 700px;
 
 	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+
+.sidebar{
+	border-right: 1px solid #ddd;
+	width: 200px;
+
+	position: absolute;
+	top: 2em;
+	z-index: 2;
 }
 
 header{
@@ -40,12 +64,6 @@ header h1{
 	color: #4681A0;
 }
 
-.sidebar{
-	border-right: 1px solid #ddd;
-	float: left;
-	width: 200px;
-}
-
 nav ul{
 	list-style: none;
 	padding: 0;
@@ -57,8 +75,6 @@ nav ul ul li{
 }
 
 nav li a{
-	color: #4681A0;
-	text-decoration: none;
 	font-size: 0.9em;
 }
 
@@ -67,15 +83,10 @@ nav li a.current{
 	text-decoration: underline;
 }
 
-nav li a:hover{
-	text-decoration: underline;
-}
-
 .main{
-	float: left;
-	padding-left: 2em;
-	width: 700px;
+	padding-left: 232px;
 	position: relative;
+	padding-bottom: 5em;
 }
 
 .main h1{

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Config - Lighter</title>
+	<title>Views - Lighter</title>
 	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -19,10 +19,10 @@
 					<li>
 						<a href="index.html">Overview</a>
 						<ul>
-							<li><a href="config.html" class="current">Config</a></li>
+							<li><a href="config.html">Config</a></li>
 							<li><a href="controllers.html">Controllers</a></li>
 							<li><a href="models.html">Models</a></li>
-							<li><a href="views.html">Views</a></li>
+							<li><a href="views.html" class="current">Views</a></li>
 							<li><a href="routing.html">Routing</a></li>
 						</ul>
 					</li>
@@ -50,29 +50,34 @@
 		</div>
 
 		<div class="main">
-			<h1>Config</h1>
-			<p class="location code">app/config/config.php</p>
+			<h1>Views</h1>
+			<p class="location code">app/views/</p>
 
-			<p>The config file defines a set of options used by the application at various stages.</p>
+			<p>Views are how you render the data of your application onto the browser.</p>
+			<p>They have access to all static libraries that have been loaded.</p>
+			<p>Views are also able to access any php variables that you send along when you load the view.</p>
+			<p>To load a view from a controller, you use the <a href="loader.html">Loader</a> library. eg.</p>
 
-			<p>Below is a breakdown of each option.</p>
+			<pre><code>Load::view('header');
+Load::view('homepage');
+Load::view('footer');</code></pre>
 
-			<dl>
-				<dt>default_controller</dt>
-				<dd>The default controller to be loaded when one is not specified in the url.</dd>
+			<p>When you load views with the Loader library, you don't need to specify the .php file extension, as all views are required to be php files anyway.</p>
 
-				<dt>base_url</dt>
-				<dd>The url to the public folder. If the public folder is the web root (public_html) then this should be left blank.</dd>
+			<p>To send php variables to a view, send them in an associative array through the second parameter of the <span class="code">Load::view()</span> function. eg.</p>
 
-				<dt>autoload libs</dt>
-				<dd>An array of libraries to load automatically every time the website is loaded.<br>For example, to always load the form, cart, and email libraries, this setting would look like <span class="code">$config['autoload']['libs'] = array('form', 'cart', 'email');</span></dd>
+			<p>Controller code</p>
+			<pre><code>
+$data['title'] = 'Hello World';
+$data['content'] = 'Yo waddup';
 
-				<dt>autoload models</dt>
-				<dd>An array of models to load automatically every time the website is loaded. Syntax is exactly the same as autoloading libraries.</dd>
+Load::view('homepage', $data);
+			</code></pre>
 
-				<dt>database credentials</dt>
-				<dd>The information needed to successfully connect to the database.</dd>
-			</dl>
+			<p>View code</p>
+			<pre><code>&lt;h1&gt;&lt;?= $title &gt;&lt;/h1&gt;
+&lt;p&gt;&lt;?= $content &gt;&lt;/p&gt;
+			</code></pre>
 		</div>
 	</div>
 

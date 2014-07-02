@@ -60,10 +60,21 @@
 
 			<p>Every request is funnelled into the index.php file, which then handles the entire execution of the application based on which url was requested.</p>
 
+			<p>The website is split up into three folders, the <b>public</b> folder (which can be renamed to anything, such as public_html or www), the <b>app</b> folder, and the <b>sys</b> folder.</p>
+
+			<p>The <b>public</b> folder contains index.php and the .htaccess file, and also any assets that your website may need.</p>
+			
+			<p>The <b>sys</b> folder contains all files necessary for lighter to operate that you, the developer, don't need to touch. Feel free to look through them to understand how lighter works.</p>
+
+			<p>The <b>app</b> folder contains libraries, files that the developer must edit, or folders where the user needs to create new files (such as controllers and methods).</p>
+
+			<p>Below is a flowchart depicting a simplified version of how lighter works.</p>
+
 			<a href="assets/img/mvc_flow.svg" target="_blank"><img src="assets/img/mvc_flow.svg"></a>
 		</div>
 	</div>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="assets/js/script.js"></script>
 </body>
 </html>

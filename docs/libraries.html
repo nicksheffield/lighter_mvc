@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Config - Lighter</title>
+	<title>Libraries - Lighter</title>
 	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -19,7 +19,7 @@
 					<li>
 						<a href="index.html">Overview</a>
 						<ul>
-							<li><a href="config.html" class="current">Config</a></li>
+							<li><a href="config.html">Config</a></li>
 							<li><a href="controllers.html">Controllers</a></li>
 							<li><a href="models.html">Models</a></li>
 							<li><a href="views.html">Views</a></li>
@@ -28,7 +28,7 @@
 					</li>
 
 					<li>
-						<a href="libraries.html">Libraries</a>
+						<a href="libraries.html" class="current">Libraries</a>
 
 						<ul>
 							<li><a href="loader.html">Loader</a></li>
@@ -50,29 +50,27 @@
 		</div>
 
 		<div class="main">
-			<h1>Config</h1>
-			<p class="location code">app/config/config.php</p>
+			<h1>Libraries</h1>
+			<p class="location code">app/libraries/</p>
+			
+			<p>When you need more functionality than Lighter typically provides, it's possible to add libraries.</p>
+			<p>Lighter already comes with a selection of useful libraries that you can load and use, but it might not cover all your bases.</p>
+			<p>To install new libraries, you just need to add them into the <span class="code">app/libraries</span> folder, and then they will be loadable.</p>
 
-			<p>The config file defines a set of options used by the application at various stages.</p>
-
-			<p>Below is a breakdown of each option.</p>
-
-			<dl>
-				<dt>default_controller</dt>
-				<dd>The default controller to be loaded when one is not specified in the url.</dd>
-
-				<dt>base_url</dt>
-				<dd>The url to the public folder. If the public folder is the web root (public_html) then this should be left blank.</dd>
-
-				<dt>autoload libs</dt>
-				<dd>An array of libraries to load automatically every time the website is loaded.<br>For example, to always load the form, cart, and email libraries, this setting would look like <span class="code">$config['autoload']['libs'] = array('form', 'cart', 'email');</span></dd>
-
-				<dt>autoload models</dt>
-				<dd>An array of models to load automatically every time the website is loaded. Syntax is exactly the same as autoloading libraries.</dd>
-
-				<dt>database credentials</dt>
-				<dd>The information needed to successfully connect to the database.</dd>
-			</dl>
+			<p>Here is a list of existing libraries that come with Lighter.</p>
+			<ul>
+				<li><a href="loader.html">Loader</a></li>
+				<li><a href="url.html">URL</a></li>
+				<li><a href="input.html">Input</a></li>
+				<li><a href="registry.html">Registry</a></li>
+				<li><a href="auth.html">Authentication</a></li>
+				<li><a href="database.html">Database</a></li>
+				<li><a href="cart.html">Cart</a></li>
+				<li><a href="email.html">Email</a></li>
+				<li><a href="form.html">Form</a></li>
+				<li><a href="hash.html">Hash</a></li>
+				<li><a href="upload.html">Upload</a></li>
+			</ul>
 		</div>
 	</div>
 

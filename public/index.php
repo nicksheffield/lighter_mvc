@@ -31,7 +31,6 @@ require_once(SYS_URL.'/libraries/load.php');
 require_once(SYS_URL.'/libraries/input.php');
 require_once(SYS_URL.'/libraries/url.php');
 require_once(SYS_URL.'/libraries/controller.php');
-require_once(SYS_URL.'/libraries/model.php');
 
 # Autoload all the classes needed
 require_once(SYS_URL.'/core/autoload.php');

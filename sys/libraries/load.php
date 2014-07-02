@@ -4,6 +4,7 @@ class Load{
 
 	public static function model($name){
 		if(file_exists(APP_URL.'/models/'.$name.'.php')){
+			require_once(SYS_URL.'/libraries/model.php');
 			require_once(APP_URL.'/models/'.$name.'.php');
 		}
 	}

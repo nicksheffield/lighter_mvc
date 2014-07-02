@@ -5,6 +5,9 @@
 # This allows us to use a header redirect any time, without worrying about previous echoes.
 ob_start();
 
+# Start the session
+session_start();
+
 # Define constants for the app and system folders
 define('APP_URL', '../app');
 define('SYS_URL', '../sys');

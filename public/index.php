@@ -1,6 +1,6 @@
 <?php
 
-# start output buffering. This temporarily stores any echoes or included views.
+# Start output buffering. This temporarily stores any echoes or included views.
 # We will output it later, at the bottom of this file.
 # This allows us to use a header redirect any time, without worrying about previous echoes.
 ob_start();
@@ -18,33 +18,26 @@ require_once(APP_URL.'/config/routes.php');
 # set the base url constant, which we will use in html
 define('BASE_URL', $config['base_url']);
 
-# loading for system classes that definitely need to be loaded into the registry
-require_once(SYS_URL.'/libraries/load.php');
-
 # Load the Registry
 require_once(SYS_URL.'/libraries/registry.php');
 Registry::$config = $config;
 Registry::$routes = $routes;
 
-# Load the base Controller class
+# Load all the classes we need
+require_once(SYS_URL.'/libraries/load.php');
+require_once(SYS_URL.'/libraries/input.php');
+require_once(SYS_URL.'/libraries/url.php');
 require_once(SYS_URL.'/libraries/controller.php');
 require_once(SYS_URL.'/libraries/model.php');
 
 # Autoload all the classes needed
 require_once(SYS_URL.'/core/autoload.php');
 
-# Load the input class
-require_once(SYS_URL.'/libraries/input.php');
-
-# Load the URL Class
-require_once(SYS_URL.'/libraries/url.php');
-
 # Load the superglobals filter
 require_once(SYS_URL.'/core/superglobals.php');
 
-# Deal with the url to see exactly what controller we are using
+# Deal with the url to see exactly what controller and method to use, and do it
 require_once(SYS_URL.'/core/routing.php');
-
 
 # output any views we have loaded and any echoes we did.
 echo ob_get_clean();

@@ -36,6 +36,9 @@ require_once(SYS_URL.'/core/autoload.php');
 # Load the input class
 require_once(SYS_URL.'/libraries/input.php');
 
+# Load the URL Class
+require_once(SYS_URL.'/libraries/url.php');
+
 # Load the superglobals filter
 require_once(SYS_URL.'/core/superglobals.php');
 

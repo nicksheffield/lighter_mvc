@@ -16,4 +16,8 @@ class Input{
 		self::$data[$key] = $val;
 	}
 
+	public static function posted(){
+		return !!count(self::$data);
+	}
+
 }

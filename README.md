@@ -53,10 +53,10 @@ There is already one for the 404 page.
 ####libraries/
 Put third party libraries in here.
 
-You can autoload them in the `app/config/config.php` or inside a controller like `$this->load->library('library_name')`
+You can autoload them in the `app/config/config.php` or inside a controller like `Load::library('library_name')`
 
 ####views/
-Put views in here. You can add subfolders if needed. Always name them as .php, never as .html.
+Put views in here. You can add subfolders if needed. Always name them as .php, never as .html
 
 ---
 
@@ -70,32 +70,34 @@ Put views in here. You can add subfolders if needed. Always name them as .php, n
 class Home extends Controller{
 
 	function index(){
-		$this->load->view('header');
-		$this->load->view('nav');
-		$this->load->view('home_page');
-		$this->load->view('footer');
+		Load::view('header');
+		Load::view('nav');
+		Load::view('home_page');
+		Load::view('footer');
 	}
 
 	function login(){
 		$data['error'] = '';
 		
-		if($_POST){
-			$this->load->model('user');
+		if(Input::posted()){
+			Load::model('user_model');
 
-			$this->user_model->username = $_POST['username'];
-			$this->user_model->password = $_POST['password'];
+			$user = new User_model();
 
-			if($this->user_model->authenticate()){
+			$user->username = Input::get('username');
+			$user->password = Input::get('password');
+
+			if($user->authenticate()){
 				URL::redirect('admin/welcome');
 			}else{
 				$data['error'] = 'Your username or password is invalid.';
 			}
 		}
 
-		$this->load->view('header');
-		$this->load->view('nav');
-		$this->load->view('login_form', $data);
-		$this->load->view('footer');
+		Load::view('header');
+		Load::view('nav');
+		Load::view('login_form', $data);
+		Load::view('footer');
 	}
 
 
@@ -116,23 +118,23 @@ class Home extends Controller{
 
 class Page_model extends Model{
 
-	# The table properties are required for every model
+	# The table property is required for every model
 	protected $table = 'tb_pages';
 
-	# The primary_key and singular properties are optional
+	# The primary_key property is optional
 	protected $primary_key = 'id';
 
-	# The singular property is used in error messages regarding this model
+	# The singular property is optional, and is used in error messages regarding this model
 	protected $singular = 'Page';
 
 	public function load_by_name($name){
-		$id = $this->db
-			->select('id')
-			->from('tb_pages')
+		$result = $this->db
+			->select('*')
+			->from($this->table)
 			->where(array('title' => $name))
-			->get_field('id');
+			->get_one();
 
-		$this->load($id);
+		$this->fill($result);
 	}
 
 }

@@ -1,10 +1,9 @@
 <?php
 
 /**
-*
 *	Form creation class
 *
-*	@version 1.1
+*	@version 1.2
 *	@author  Nick Sheffield
 *
 */
@@ -12,7 +11,6 @@
 class Form{
 
 	/**
-	*
 	*	Creates a form open tag
 	*	
 	*	@param  string $action The url for the form to post to
@@ -27,7 +25,6 @@ class Form{
 	}
 
 	/**
-	*
 	*	Creates a form open tag that works with uploads
 	*	
 	*	@param  string $action The url for the form to post to
@@ -35,7 +32,7 @@ class Form{
 	*	@return string $html   The completed form tag
 	*	
 	*/
-	public static function open_multipart($action = ''){
+	public static function open_upload($action = ''){
 		$html = "<form action='$action' method='post' enctype='multipart/form-data'>";
 		return $html;
 	}
@@ -47,12 +44,10 @@ class Form{
 	*	
 	*/
 	public static function close(){
-		$html = '</form>';
-		return $html;
+		return '</form>';
 	}
 
 	/**
-	*
 	*	Creates a input tag
 	*	
 	*	@param  string $type   The type of input it will be
@@ -70,6 +65,19 @@ class Form{
 
 	/**
 	*
+	*	Make a string of html attributes out of an array
+	*
+	*
+	*/
+	public function make_extras($extras){
+		$html = '';
+		foreach($extras as $key => $val){
+			$html .= " $key='$val' ";
+		}
+		return $html;
+	}
+
+	/**
 	*	Creates a label tag
 	*	
 	*	@param  string $for    The id attribute of the field this label is for
@@ -84,7 +92,6 @@ class Form{
 	}
 
 	/**
-	*
 	*	Creates a textarea tag
 	*	
 	*	@param  string $name   The name attribute of the textarea
@@ -99,7 +106,6 @@ class Form{
 	}
 
 	/**
-	*
 	*	Creates a set of option tags from an array
 	*
 	*	@used-by self::select() to get option tags
@@ -122,7 +128,6 @@ class Form{
 	}
 
 	/**
-	*
 	*	Creates a select tag with option tags within it
 	*	
 	*	@uses   self::options() to get option tags
@@ -144,7 +149,6 @@ class Form{
 	/* Shortcut functions for common input types */
 
 	/**
-	*
 	*	Creates a hidden input tag
 	*	
 	*	@uses   self::input() to create the tag
@@ -161,7 +165,6 @@ class Form{
 	}
 
 	/**
-	*
 	*	Creates a text input tag
 	*	
 	*	@uses   self::input() to create the tag
@@ -178,7 +181,6 @@ class Form{
 	}
 
 	/**
-	*
 	*	Creates a password input tag
 	*	
 	*	@uses   self::input() to create the tag
@@ -195,7 +197,6 @@ class Form{
 	}
 
 	/**
-	*
 	*	Creates a file input tag
 	*	
 	*	@uses   self::input() to create the tag
@@ -211,7 +212,6 @@ class Form{
 	}
 
 	/**
-	*
 	*	Creates a submit button
 	*	
 	*	@uses   self::input() to create the tag
@@ -227,7 +227,6 @@ class Form{
 	}
 
 	/**
-	*
 	*	Creates a hidden input tag for to MAX_FILE_SIZE
 	*	
 	*	@uses   self::input() to create the tag
@@ -243,7 +242,6 @@ class Form{
 	}
 
 	/**
-	*
 	*	Creates a number input tag
 	*	
 	*	@uses   self::input() to create the tag
@@ -257,6 +255,122 @@ class Form{
 	*/
 	public static function number($name, $value = '', $extras = ''){
 		$html = self::input('number', $name, $value, $extras);
+		return $html;
+	}
+
+	/**
+	*	Creates a email input tag
+	*	
+	*	@uses   self::input() to create the tag
+	*
+	*	@param  string $name   The name attribute
+	*	@param  string $value  The value attribute
+	*	@param  string $extras Any extra attributes to be added to the tag
+	*	
+	*	@return string $html   The completed email input tag
+	*	
+	*/
+	public static function email($name, $value = '', $extras = ''){
+		$html = self::input('email', $name, $value, $extras);
+		return $html;
+	}
+
+	/**
+	*	Creates a url input tag
+	*	
+	*	@uses   self::input() to create the tag
+	*
+	*	@param  string $name   The name attribute
+	*	@param  string $value  The value attribute
+	*	@param  string $extras Any extra attributes to be added to the tag
+	*	
+	*	@return string $html   The completed url input tag
+	*	
+	*/
+	public static function url($name, $value = '', $extras = ''){
+		$html = self::input('url', $name, $value, $extras);
+		return $html;
+	}
+
+	/**
+	*	Creates a date input tag
+	*	
+	*	@uses   self::input() to create the tag
+	*
+	*	@param  string $name   The name attribute
+	*	@param  string $value  The value attribute
+	*	@param  string $extras Any extra attributes to be added to the tag
+	*	
+	*	@return string $html   The completed date input tag
+	*	
+	*/
+	public static function date($name, $value = '', $extras = ''){
+		$html = self::input('date', $name, $value, $extras);
+		return $html;
+	}
+
+	/**
+	*	Creates a checkbox input tag
+	*	
+	*	@uses   self::input() to create the tag
+	*
+	*	@param  string  $name     The name attribute
+	*	@param  string  $value    The value attribute
+	*	@param  boolean $checked  Whether to check the box or not
+	*	@param  string  $extras   Any extra attributes to be added to the tag
+	*	
+	*	@return string  $html     The completed checkbox input tag
+	*	
+	*/
+	public static function checkbox($name, $value = '', $checked = false, $extras = ''){
+			
+		$extras .= $checked ? ' checked' : '';
+
+		$html = self::input('checkbox', $name, $value, $extras);
+		return $html;
+	}
+
+	/**
+	*	Creates a radio input tag
+	*	
+	*	@uses   self::input() to create the tag
+	*
+	*	@param  string  $name     The name attribute
+	*	@param  string  $value    The value attribute
+	*	@param  boolean $checked  Whether to check the box or not
+	*	@param  string  $extras   Any extra attributes to be added to the tag
+	*	
+	*	@return string  $html     The completed radio input tag
+	*	
+	*/
+	public static function radio($name, $value = '', $checked = false, $extras = ''){
+			
+		$extras .= $checked ? ' checked' : '';
+
+		$html = self::input('radio', $name, $value, $extras);
+		return $html;
+	}
+
+	/**
+	*	Creates a range input tag
+	*	
+	*	@uses   self::input() to create the tag
+	*
+	*	@param  string $name     The name attribute
+	*	@param  string $value    The value attribute
+	*	@param  int    $min      The lowest end of the range
+	*	@param  int    $max      The highest end of the range
+	*	@param  int    $step     How much to increment or decrement
+	*	@param  string $extras   Any extra attributes to be added to the tag
+	*	
+	*	@return string  $html     The completed range input tag
+	*	
+	*/
+	public static function range($name, $value = '', $min = 0, $max = 100, $step = 1, $extras = ''){
+			
+		$extras .= $checked ? ' checked' : '';
+
+		$html = self::input('range', $name, $value, $extras);
 		return $html;
 	}
 }

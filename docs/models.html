@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Lighter</title>
+	<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+	
+	<div class="container">
+		<div class="sidebar">
+			<header>
+				<img src="assets/img/match.svg">
+				<h1>Lighter</h1>
+			</header>
+
+			<nav>
+				<ul>
+					<li>
+						<a href="index.html">Overview</a>
+						<ul>
+							<li><a href="config.html">Config</a></li>
+							<li><a href="controllers.html">Controllers</a></li>
+							<li><a href="models.html" class="current">Models</a></li>
+							<li><a href="views.html">Views</a></li>
+							<li><a href="routing.html">Routing</a></li>
+						</ul>
+					</li>
+
+					<li>
+						<a href="libraries.html">Libraries</a>
+
+						<ul>
+							<li><a href="loader.html">Loader</a></li>
+							<li><a href="url.html">URL</a></li>
+							<li><a href="input.html">Input</a></li>
+							<li><a href="registry.html">Registry</a></li>
+							<li><a href="auth.html">Authentication</a></li>
+							<li><a href="database.html">Database</a></li>
+							<li><a href="cart.html">Cart</a></li>
+							<li><a href="email.html">Email</a></li>
+							<li><a href="form.html">Form</a></li>
+							<li><a href="hash.html">Hash</a></li>
+							<li><a href="upload.html">Upload</a></li>
+						</ul>
+
+					</li>
+				</ul>
+			</nav>
+		</div>
+
+		<div class="main">
+			<h1>Models</h1>
+			<p class="location code">app/models/</p>
+
+			<p>Models are our way of accessing records from a mysql database.</p>
+			<p>Each model is related to a single database table, for example a User model for the tb_users table.</p>
+			<p>Lighter comes with a bunch of useful preset operations that models can perform, such as loading, saving, and deleting, but if more specialised operations are required, they can be written as methods in the model files.</p>
+
+			<hr>
+
+			
+			<h2>Properties</h2>
+
+			<div class="doc">
+			
+				<dl>
+					<dt>$table</dt>
+					<dd>Protected. Required. The table this model is related to.</dd>
+					
+					<dt>$singular</dt>
+					<dd>Protected. Optional. The name given to this type of record. Used in error messages.</dd>
+					
+					<dt>$primary_key</dt>
+					<dd>Protected. Optional. The primary_key of this table. Defaults to 'id'.</dd>
+
+				</dl>
+			</div>
+
+			<h2>Built in methods</h2>
+
+			<div class="doc">
+
+				<dl>
+					<dt>load($id)</dt>
+					<dd>Select the record from the database where the primary key = $id and add it to this models data</dd>
+
+					<dt>fill($data)</dt>
+					<dd>Add an associative array of data ($data) to this model. If the data includes the primary key, this can be used in lieu of load()</dd>
+
+					<dt>save()</dt>
+					<dd>Performs an update or insert query on the database depending on whether the primary key exists in the data</dd>
+
+					<dt>delete()</dt>
+					<dd>Performs a soft delete (set the deleted field for this record to 1)</dd>
+				</dl>
+
+			</div>
+
+			<hr>
+
+			<h2>Example of model definition</h2>
+
+			<pre><code>&lt;?php
+
+class Page extends Model{
+
+	protected $table    = 'tb_pages';
+	protected $singular = 'Page';
+
+	public function load_by_name($name){
+
+		$result = $this->db->
+			->select('*')
+			->from($this->table)
+			->where('name', $name)
+			->get_one();
+
+		$this->fill($result);
+	}	
+}
+</code></pre>
+
+				<h2>Example of model usage</h2>
+
+				<pre><code>
+$user = new User();
+
+$user->load($id);
+
+$user->username = Input::get('username');
+$user->password = Hash::make(Input::get('password'));
+
+$user->save();
+</code></pre>
+			</div>
+		</div>
+	</div>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</body>
+</html>

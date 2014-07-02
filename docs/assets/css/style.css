@@ -15,7 +15,7 @@ body{
 	-webkit-font-smoothing: antialiased;
 }
 
-p, li{
+p, li, dl{
 	line-height: 1.5;
 }
 
@@ -62,6 +62,11 @@ nav li a{
 	font-size: 0.9em;
 }
 
+nav li a.current{
+	color: #333;
+	text-decoration: underline;
+}
+
 nav li a:hover{
 	text-decoration: underline;
 }
@@ -70,6 +75,7 @@ nav li a:hover{
 	float: left;
 	padding-left: 2em;
 	width: 700px;
+	position: relative;
 }
 
 .main h1{
@@ -78,4 +84,40 @@ nav li a:hover{
 
 .main img{
 	max-width: 100%;
+}
+
+.main .location{
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.code, code{
+	padding: 1px 2px;
+	background: #eee;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	font-family: monospace;
+}
+
+pre code{
+	display: block;
+	padding: 1em;
+}
+
+dt{
+	font-weight: bold;
+	margin-top: 2em;
+}
+
+dd{
+	margin: 0;
+}
+
+.doc{
+	padding-left: 2em;
+}
+
+.doc ul{
+	list-style: none;
 }

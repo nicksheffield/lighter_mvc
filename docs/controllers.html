@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Lighter</title>
+	<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+	
+	<div class="container">
+		<div class="sidebar">
+			<header>
+				<img src="assets/img/match.svg">
+				<h1>Lighter</h1>
+			</header>
+
+			<nav>
+				<ul>
+					<li>
+						<a href="index.html">Overview</a>
+						<ul>
+							<li><a href="config.html">Config</a></li>
+							<li><a href="controllers.html" class="current">Controllers</a></li>
+							<li><a href="models.html">Models</a></li>
+							<li><a href="views.html">Views</a></li>
+							<li><a href="routing.html">Routing</a></li>
+						</ul>
+					</li>
+
+					<li>
+						<a href="libraries.html">Libraries</a>
+
+						<ul>
+							<li><a href="loader.html">Loader</a></li>
+							<li><a href="url.html">URL</a></li>
+							<li><a href="input.html">Input</a></li>
+							<li><a href="registry.html">Registry</a></li>
+							<li><a href="auth.html">Authentication</a></li>
+							<li><a href="database.html">Database</a></li>
+							<li><a href="cart.html">Cart</a></li>
+							<li><a href="email.html">Email</a></li>
+							<li><a href="form.html">Form</a></li>
+							<li><a href="hash.html">Hash</a></li>
+							<li><a href="upload.html">Upload</a></li>
+						</ul>
+
+					</li>
+				</ul>
+			</nav>
+		</div>
+
+		<div class="main">
+			<h1>Controllers</h1>
+			<p class="location code">app/controllers/</p>
+
+			<p>Controllers are php classes that define sets of related pages.</p>
+
+			<p>They are defined as a class that extends the <i>Controller</i> class, and have methods that act as pages.</p>
+
+			<p>They relate directly to the request URL. If the user requests the page <span class="code">user/login</span> the User <i>controller</i> is loaded, and the login <i>method</i> is run. The User controller may have other pages defined within it, such as logout, register, edit or delete.</p>
+
+			<p>An example of a simple controller:</p>
+
+			<pre><code>&lt;?php
+
+class Site extends Controller{
+
+	function index(){
+		echo 'Hello World';
+	}
+
+}
+</code></pre>
+
+			<p>When the user requests <span class="code">http://example.com/site/index</span>, <span class="code">http://example.com/site</span> or even just <span class="code">http://example.com</span> if site is set as the default controller, 'Hello World' would be displayed.</p>
+
+			<p>If you need to make a method inside a controller that is blocked from being accessed via the url, you can do so by adding an underscore to the beginning of the method name. eg.</p>
+
+			<pre><code>&lt;?php
+
+class Site extends Controller{
+
+	function index(){
+		echo 'Hello World';
+	}
+
+	function _secret_function(){
+		echo 'This can never be seen in a browser';
+	}
+
+}
+</code></pre>
+		</div>
+	</div>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</body>
+</html>

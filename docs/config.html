@@ -17,9 +17,9 @@
 			<nav>
 				<ul>
 					<li>
-						<a href="index.html" class="current">Overview</a>
+						<a href="index.html">Overview</a>
 						<ul>
-							<li><a href="config.html">Config</a></li>
+							<li><a href="config.html" class="current">Config</a></li>
 							<li><a href="controllers.html">Controllers</a></li>
 							<li><a href="models.html">Models</a></li>
 							<li><a href="views.html">Views</a></li>
@@ -50,17 +50,29 @@
 		</div>
 
 		<div class="main">
-			<h1>Overview</h1>
+			<h1>Config</h1>
+			<p class="location code">app/config/config.php</p>
 
-			<p><i>Lighter</i> is a simple MVC framework for rapid web application development in PHP.</p>
+			<p>The config file defines a set of options used by the application at various stages.</p>
 
-			<p>It contains a set of useful libraries ready for use out of the box, and is constructed in an easy to understand way.</p>
+			<p>Below is a breakdown of each option.</p>
 
-			<p>It is created in a Front Controller pattern, which is described as a design pattern that "provides a centralized entry point for handling requests."</p>
+			<dl>
+				<dt>default_controller</dt>
+				<dd>The default controller to be loaded when one is not specified in the url.</dd>
 
-			<p>Every request is funnelled into the index.php file, which then handles the entire execution of the application based on which url was requested.</p>
+				<dt>base_url</dt>
+				<dd>The url to the public folder. If the public folder is the web root (public_html) then this should be left blank.</dd>
 
-			<a href="assets/img/mvc_flow.svg" target="_blank"><img src="assets/img/mvc_flow.svg"></a>
+				<dt>autoload libs</dt>
+				<dd>An array of libraries to load automatically every time the website is loaded.<br>For example, to always load the form, cart, and email libraries, this setting would look like <span class="code">$config['autoload']['libs'] = array('form', 'cart', 'email');</span></dd>
+
+				<dt>autoload models</dt>
+				<dd>An array of models to load automatically every time the website is loaded. Syntax is exactly the same as autoloading libraries.</dd>
+
+				<dt>database credentials</dt>
+				<dd>The information needed to successfully connect to the database.</dd>
+			</dl>
 		</div>
 	</div>
 

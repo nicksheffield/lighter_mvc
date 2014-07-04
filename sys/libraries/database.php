@@ -282,7 +282,7 @@ class Database{
 
 
 
-	public function make_where($data){
+	private function make_where($data){
 
 		if(is_array($data)){
 			foreach($data as $field => $value){

@@ -17,7 +17,7 @@ class Model{
 	public function __construct(){
 		$this->db = Registry::$db;
 
-		$this->fields = $this->db->get_fields($this->table);
+		$this->fields = $this->db->get_columns($this->table);
 		$this->data[$this->primary_key] = null;
 	}
 

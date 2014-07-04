@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Database - Lighter</title>
+	<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+	
+	<div class="container">
+		<div class="sidebar">
+			<header>
+				<img src="assets/img/match.svg">
+				<h1>Lighter</h1>
+			</header>
+
+			<nav>
+				<ul>
+					<li>
+						<a href="index.html">Overview</a>
+						<ul>
+							<li><a href="config.html">Config</a></li>
+							<li><a href="controllers.html">Controllers</a></li>
+							<li><a href="models.html">Models</a></li>
+							<li><a href="views.html">Views</a></li>
+							<li><a href="routing.html">Routing</a></li>
+						</ul>
+					</li>
+
+					<li>
+						<a href="libraries.html">Libraries</a>
+
+						<ul>
+							<li><a href="loader.html">Loader</a></li>
+							<li><a href="url.html">URL</a></li>
+							<li><a href="input.html">Input</a></li>
+							<li><a href="registry.html">Registry</a></li>
+							<li><a href="auth.html">Authentication</a></li>
+							<li><a href="database.html" class="current">Database</a></li>
+							<li><a href="cart.html">Cart</a></li>
+							<li><a href="email.html">Email</a></li>
+							<li><a href="form.html">Form</a></li>
+							<li><a href="hash.html">Hash</a></li>
+							<li><a href="upload.html">Upload</a></li>
+						</ul>
+
+					</li>
+				</ul>
+			</nav>
+		</div>
+
+		<div class="main">
+			<h1>Database</h1>
+			<p class="location code">sys/libraries/load.php</p>
+
+			<p>This library is used to build queries, send them to the database, and organise the result. It connects using the details set in <span class="code">app/config/config.php</span></p>
+			
+			<hr>
+
+			<h2>Properties</h2>
+
+			<div class="doc">
+
+				<dl>
+					<dt>last_query</dt>
+					<dd>The last query that was sent to the database</dd>
+
+					<dt>last_insert_id</dt>
+					<dd>The id of the most recently inserted item</dd>
+
+					<dt>num_updated_rows</dt>
+					<dd>The number of rows that were affected in the last update query</dd>
+
+				</dl>
+			</div>
+
+			<h2>Methods</h2>
+
+			<div class="doc">
+
+				<dl>
+					<dt>select($fields)</dt>
+					<dd>Writes the SELECT clause with a comma separated list of fields</dd>
+
+					<dt>from($table)</dt>
+					<dd>Writes the FROM clause with <span class="code">$table</span></dd>
+					
+					<dt>where($data)</dt>
+					<dd>Transforms an <abbr title="associative">assoc</abbr> array (<span class="code">$data</span>) into WHERE and AND clauses</dd>
+					
+					<dt>order_by($data)</dt>
+					<dd>Transforms an <abbr title="associative">assoc</abbr> array (<span class="code">$data</span>) into an ORDER BY clause.<br>In the array, <span class="code">'field' => 'order'</span>. If no order is given, <span class="code">'asc'</span> is assumed</dd>
+					
+					<dt>set($data, $value = null)</dt>
+					<dd>If <span class="code">$data</span> is an array, this method transforms it into a SET clause. If <span class="code">$data</span> is not an array, and <span class="code">$value</span> is provided, <span class="code">$data</span> is treated as the field to set, and <span class="code">$value</span> as the value.</dd>
+					
+					<dt>get()</dt>
+					<dd>Runs the built query and returns an array of each item selected. Each item is an <abbr title="associative">assoc</abbr> array of the results, where <span class="code">'field' => 'value'</span></dd>
+
+					<dt>get_one()</dt>
+					<dd>Runs get() and returns only the first found item as an <abbr title="associative">assoc</abbr> array of the results, where <span class="code">'field' => 'value'</span></dd>
+
+					<dt>get_field($field)</dt>
+					<dd>Runs get_one and returns only the value of <span class="code">$field</span></dd>
+
+					<dt>get_columns($table)</dt>
+					<dd>Returns a list of all the column names in <span class="code">$table</span></dd>
+
+					<dt>insert($table, $data = null)</dt>
+					<dd>Runs the built insert query and returns success as a boolean. The insert is sent to the table named <span class="code">$table</span> and if <span class="code">$data</span> is provided, it is run through the set() method</dd>
+
+					<dt>update($table, $where = null, $data = null)</dt>
+					<dd>Runs the built update query and returns success as a boolean. The update is sent to the table named <span class="code">$table</span>. If <span class="code">$where</span> is provided, it is run through the where() method. If <span class="code">$data</span> is provided, it is run through the set() method</dd>
+
+				</dl>
+			</div>
+		</div>
+	</div>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="assets/js/script.js"></script>
+</body>
+</html>

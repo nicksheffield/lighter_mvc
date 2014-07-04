@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Routing - Lighter</title>
+	<title>Cart - Lighter</title>
 	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -23,7 +23,7 @@
 							<li><a href="controllers.html">Controllers</a></li>
 							<li><a href="models.html">Models</a></li>
 							<li><a href="views.html">Views</a></li>
-							<li><a href="routing.html" class="current">Routing</a></li>
+							<li><a href="routing.html">Routing</a></li>
 						</ul>
 					</li>
 
@@ -36,7 +36,7 @@
 							<li><a href="input.html">Input</a></li>
 							<li><a href="auth.html">Authentication</a></li>
 							<li><a href="database.html">Database</a></li>
-							<li><a href="cart.html">Cart</a></li>
+							<li><a href="cart.html" class="current">Cart</a></li>
 							<li><a href="email.html">Email</a></li>
 							<li><a href="form.html">Form</a></li>
 							<li><a href="hash.html">Hash</a></li>
@@ -49,25 +49,37 @@
 		</div>
 
 		<div class="main">
-			<h1>Routing</h1>
-			<p class="location code">app/config/routes.php</p>
+			<h1>Cart</h1>
+			<p class="location code">app/libraries/cart.php</p>
 
-			<p>Routes are like shortcuts.</p>
+			<p>This library is used to store items in a cart, update them, and remove them.</p>
+			
+			<hr>
 
-			<p>Example:</p>
+			<h2>Methods</h2>
 
-			<p><span class="code">$routes['login'] = 'home/login';</span></p>
+			<div class="doc">
 
-			<p>This means if a user tries to access <span class="code">http://example.com/login</span> it will load the <b>home</b> controller and then run the <b>login</b> method</p>
+				<dl>
+					<dt>add_product($id, $qty)</dt>
+					<dd>Static. Add the product into the cart. If the product already exists, increase the quantity by <span class="code">$qty</span></dd>
 
-			<p>Wildcards are also possible, for example, if you want to edit a user, you might have a controller already called "admin", with a method inside that called "edit_user", but want to url of that page to look like <span class="code">http://example.com/edit/user/9</span></p>
+					<dt>remove_product($id)</dt>
+					<dd>Static. Remove an item from the cart.</dd>
 
-			<p>Even if you don't have an "edit" controller, with a "user" function, you can still simulate that by creating a route like:</p>
+					<dt>set_quantity($id, $qty)</dt>
+					<dd>Static. Modify the quantity of an item in the cart.</dd>
 
-			<p><span class="code">$routes['edit/user/:num'] = 'admin/edit_user/:num';</span></p>
+					<dt>get_total()</dt>
+					<dd>Static. Get the total quantity of items in the cart.</dd>
 
-			<p>:num can be replaced by any digit<br>
-			:any can be replaced by any alphanumeric character (a-z, A-Z, 0-9), or hyphen (-) and percent (%)</p>
+					<dt>get_cart()</dt>
+					<dd>Static. Return the cart as an associative array.</dd>
+
+					<dt>clear_cart()</dt>
+					<dd>Static. Removes all items from the cart.</dd>
+				</dl>
+			</div>
 		</div>
 	</div>
 

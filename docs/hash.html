@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Routing - Lighter</title>
+	<title>Hash - Lighter</title>
 	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -23,7 +23,7 @@
 							<li><a href="controllers.html">Controllers</a></li>
 							<li><a href="models.html">Models</a></li>
 							<li><a href="views.html">Views</a></li>
-							<li><a href="routing.html" class="current">Routing</a></li>
+							<li><a href="routing.html">Routing</a></li>
 						</ul>
 					</li>
 
@@ -39,7 +39,7 @@
 							<li><a href="cart.html">Cart</a></li>
 							<li><a href="email.html">Email</a></li>
 							<li><a href="form.html">Form</a></li>
-							<li><a href="hash.html">Hash</a></li>
+							<li><a href="hash.html" class="current">Hash</a></li>
 							<li><a href="upload.html">Upload</a></li>
 						</ul>
 
@@ -49,25 +49,24 @@
 		</div>
 
 		<div class="main">
-			<h1>Routing</h1>
-			<p class="location code">app/config/routes.php</p>
+			<h1>Hash</h1>
+			<p class="location code">app/libraries/hash.php</p>
 
-			<p>Routes are like shortcuts.</p>
+			<p>This library is used to create and verify passwords. It is actually a wrapper for the <a href="http://www.openwall.com/phpass/" target="_blank">PhPass</a> library.</p>
+			
+			<hr>
 
-			<p>Example:</p>
+			<h2>Methods</h2>
 
-			<p><span class="code">$routes['login'] = 'home/login';</span></p>
+			<div class="doc">
+				<dl>
+					<dt>make($password)</dt>
+					<dd>Static. Returns the hashed password.</dd>
 
-			<p>This means if a user tries to access <span class="code">http://example.com/login</span> it will load the <b>home</b> controller and then run the <b>login</b> method</p>
-
-			<p>Wildcards are also possible, for example, if you want to edit a user, you might have a controller already called "admin", with a method inside that called "edit_user", but want to url of that page to look like <span class="code">http://example.com/edit/user/9</span></p>
-
-			<p>Even if you don't have an "edit" controller, with a "user" function, you can still simulate that by creating a route like:</p>
-
-			<p><span class="code">$routes['edit/user/:num'] = 'admin/edit_user/:num';</span></p>
-
-			<p>:num can be replaced by any digit<br>
-			:any can be replaced by any alphanumeric character (a-z, A-Z, 0-9), or hyphen (-) and percent (%)</p>
+					<dt>check($password, $hash)</dt>
+					<dd>Static. Checks if the password was used to create the hash.</dd>
+				</dl>
+			</div>
 		</div>
 	</div>
 

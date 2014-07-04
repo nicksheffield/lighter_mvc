@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>URL - Lighter</title>
+	<title>Email - Lighter</title>
 	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -32,12 +32,12 @@
 
 						<ul>
 							<li><a href="loader.html">Loader</a></li>
-							<li><a href="url.html" class="current">URL</a></li>
+							<li><a href="url.html">URL</a></li>
 							<li><a href="input.html">Input</a></li>
 							<li><a href="auth.html">Authentication</a></li>
 							<li><a href="database.html">Database</a></li>
 							<li><a href="cart.html">Cart</a></li>
-							<li><a href="email.html">Email</a></li>
+							<li><a href="email.html" class="current">Email</a></li>
 							<li><a href="form.html">Form</a></li>
 							<li><a href="hash.html">Hash</a></li>
 							<li><a href="upload.html">Upload</a></li>
@@ -49,35 +49,49 @@
 		</div>
 
 		<div class="main">
-			<h1>URL</h1>
-			<p class="location code">sys/libraries/url.php</p>
+			<h1>Email</h1>
+			<p class="location code">app/libraries/email.php</p>
 
-			<p>This library is used to perform redirects and break down the current URL into usable parts.</p>
+			<p>Create and send emails.</p>
 			
 			<hr>
+
+			<h2>Properties</h2>
+
+			<div class="doc">
+
+				<dl>
+					<dt>$to</dt>
+					<dd>String. The email address to send the email to.<br>
+					Can be a single email address: <span class="code">bob@example.com</span><br>
+					Can include a name: <span class="code">Bob &lt;bob@example.com&gt;</span><br>
+					Can be a comma separated list of addresses: <span class="code">bob@example.com, john@example.com</span><br>
+					Which can also include names: <span class="code">Bob &lt;bob@example.com&gt;, John &lt;john@example.com&gt;</span></dd>
+
+					<dt>$from</dt>
+					<dd>String. The from address</dd>
+
+					<dt>$subject</dt>
+					<dd>String. The subject of the email</dd>
+
+					<dt>$message</dt>
+					<dd>String. The main message</dd>
+
+					<dt>$html</dt>
+					<dd>Boolean. If this is set to true, all html inside the $message string will be treated as code</dd>
+
+					<dt>$success</dt>
+					<dd>Boolean. If the email is sent successfully, this is true</dd>
+				</dl>
+			</div>
 
 			<h2>Methods</h2>
 
 			<div class="doc">
 
 				<dl>
-					<dt>redirect($url)</dt>
-					<dd>Static. Redirect to $url.</dd>
-
-					<dt>parts()</dt>
-					<dd>Static. Returns an array of each segment of the url. eg, on home/login <span class="code">URL::parts()</span> would return <span class="code">array('home', 'login')</span>.</dd>
-
-					<dt>part($n)</dt>
-					<dd>Static. Return a single part from the parts() method above.</dd>
-
-					<dt>string()</dt>
-					<dd>Static. Returns the current url in string form.</dd>
-
-					<dt>save($url = false)</dt>
-					<dd>Static. Stores the current url temporarily, or, if a url is provided, store that instead.</dd>
-
-					<dt>restore()</dt>
-					<dd>Static. Redirects to the url stored by save().</dd>
+					<dt>send()</dt>
+					<dd>Send the email, and return the success as a boolean</dd>
 				</dl>
 			</div>
 		</div>

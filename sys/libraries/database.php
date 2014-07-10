@@ -284,6 +284,8 @@ class Database{
 
 	private function make_where($data){
 
+		$where = '';
+
 		if(is_array($data)){
 			foreach($data as $field => $value){
 				$field = trim($field);

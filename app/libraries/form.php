@@ -19,8 +19,8 @@ class Form{
 	*	@return string $html   The completed form tag
 	*	
 	*/
-	public static function open($action = '', $method = 'post'){
-		$html = "<form action='$action' method='$method'>";
+	public static function open($action = '', $method = 'post', $extras = false){
+		$html = "<form action='$action' method='$method' $extras>";
 		return $html;
 	}
 

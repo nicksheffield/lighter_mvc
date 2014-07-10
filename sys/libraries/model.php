@@ -18,7 +18,6 @@ class Model{
 		$this->db = Registry::$db;
 
 		$this->fields = $this->db->get_columns($this->table);
-		$this->data[$this->primary_key] = null;
 	}
 
 

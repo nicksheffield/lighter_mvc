@@ -39,15 +39,15 @@ class URL{
 		}
 
 		$parts = explode('/', self::$path);
+		$return_parts = array();
 		
-
 		foreach($parts as $key => $val){
-			if($val == ''){
-				unset($parts[$key]);
+			if($val != ''){
+				$return_parts[] = $val;
 			}
 		}
 
-		return $parts;
+		return $return_parts;
 	}
 
 	/**

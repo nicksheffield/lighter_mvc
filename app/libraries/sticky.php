@@ -4,7 +4,7 @@ class Sticky{
 	
 	private static $data = array();
 
-	public static function get($var){
+	public static function get($var, $alt = null){
 
 		# Check if the var is in the $data, if so return that
 		if(isset(self::$data[$var])){
@@ -13,6 +13,10 @@ class Sticky{
 			# else, check if it's in Input, and if so return that
 		}else if(Input::get($var)){
 			return Input::get($var);
+
+			# else, if we provided an alt, use that
+		}else if($alt != null){
+			return $alt;
 
 			# If not found at all, return false
 		}else{

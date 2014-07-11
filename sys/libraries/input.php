@@ -16,6 +16,10 @@ class Input{
 		self::$data[$key] = $val;
 	}
 
+	public function has($key){
+		return isset(self::$data[$key]);
+	}
+
 	public static function posted(){
 		return !!count(self::$data);
 	}
